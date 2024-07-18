@@ -2,11 +2,15 @@ import os
 import sys
 from ai_models.predictive_model import PredictiveModel
 from ai_models.deep_learning_model import DeepLearningModel
+from ai_models.neural_network_model import NeuralNetworkModel
 from optimization.mining_process_optimizer import MiningProcessOptimizer
 from optimization.energy_efficiency_optimizer import EnergyEfficiencyOptimizer
 from optimization.genetic_algorithm_optimizer import GeneticAlgorithmOptimizer
+from optimization.particle_swarm_optimizer import ParticleSwarmOptimizer
 from models.ensemble_model import EnsembleModel
+from models.hybrid_model import HybridModel
 from utils.data_loader import DataLoader
+from utils.data_preprocessing import DataPreprocessing
 from utils.data_visualization import DataVisualization
 
 def main():
@@ -14,9 +18,13 @@ def main():
     data_loader = DataLoader()
     market_data = data_loader.load_data()
 
+    # Preprocess data
+    data_preprocessing = DataPreprocessing()
+    preprocessed_data = data_preprocessing.preprocess_data(market_data)
+
     # Extract features
     feature_engineering = FeatureEngineering()
-    features = feature_engineering.extract_features(market_data)
+    features = feature_engineering.extract_features(preprocessed_data)
 
     # Scale features
     scaled_features = feature_engineering.scale_features(features)
@@ -29,9 +37,17 @@ def main():
     deep_learning_model = DeepLearningModel()
     deep_learning_model.train(scaled_features, market_data['target'])
 
+    # Train neural network model
+    neural_network_model = NeuralNetworkModel()
+    neural_network_model.train(scaled_features, market_data['target'])
+
     # Train ensemble model
     ensemble_model = EnsembleModel()
     ensemble_model.train(scaled_features, market_data['target'])
+
+    # Train hybrid model
+    hybrid_model = HybridModel()
+    hybrid_model.train(scaled_features, market_data['target'])
 
     # Optimize mining process
     mining_optimizer = MiningProcessOptimizer()
@@ -44,6 +60,10 @@ def main():
     # Optimize using genetic algorithm
     genetic_optimizer = GeneticAlgorithmOptimizer()
     optimized_genetic_algorithm = genetic_optimizer.optimize(predictive_model.predict(scaled_features))
+
+    # Optimize using particle swarm optimization
+    particle_swarm_optimizer = ParticleSwarmOptimizer()
+    optimized_particle_swarm = particle_swarm_optimizer.optimize(predictive_model.predict(scaled_features))
 
     # Visualize data
     data_visualization = DataVisualization()
