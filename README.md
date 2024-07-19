@@ -5,7 +5,7 @@
 AI-powered mining platform for intelligent mining processes and optimized user rewards.
 
 # Mine Genius: The Ultimate AI-Powered Mining Simulator
-Welcome to Mine Genius, the most advanced AI-powered mining simulator in the universe! This repository contains the source code for the Mine Genius project, a cutting-edge AI-powered mining simulator that utilizes the latest advancements in artificial intelligence, machine learning, and data analytics to create a realistic and immersive mining experience.
+Welcome to Mine Genius, the most advanced AI-powered mining simulator in the universe! This repository contains the source code for the SmartMine project, a cutting-edge AI-powered mining simulator that utilizes the latest advancements in artificial intelligence, machine learning, and data analytics to create a realistic and immersive mining experience.
 
 # Features
 
